@@ -39,6 +39,7 @@ mkdir /opt/splunk
 yum install wget -y
 wget -O splunk.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.2/linux/splunk-9.1.0.2-b6436b649711-Linux-x86_64.tgz"
 tar xvzf splunk.tgz -C /opt
+
 ```
 
 You now have a copy of Splunk Enterprise in the /opt/splunk directory. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
@@ -72,6 +73,7 @@ mkdir /opt/splunkforwarder
 yum install wget -y
 wget -O splunkforwarder.tgz "https://download.splunk.com/products/universalforwarder/releases/9.1.0.1/linux/splunkforwarder-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz"
 tar xvzf splunkforwarder.tgz -C /opt
+
 ```
 
 You now have a copy of the Splunk Universal Forwarder in the /opt/splunkforwarder directory. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
@@ -81,11 +83,10 @@ echo 'export PATH=$PATH:/opt/splunkforwarder/bin' >> ~/.bashrc
 ```
 
 Now you can call the splunk binary by simply typing `splunk` in the console. Initiate the Splunk UF and point it to the splunk-ms instance as its deployment server and indexer:
-```
-splunk start --accept-license
-# Create admin user and password
-splunk set deploy-poll <splunk-ms IP>:8089
-splunk add forward-server <splunk-ms IP>:9997
-splunk restart
-```
+
+1. `splunk start --accept-license`
+    # Create admin user and password
+1. `splunk set deploy-poll <splunk-ms IP>:8089`
+1. `splunk add forward-server <splunk-ms IP>:9997`
+1. `splunk restart`
 
