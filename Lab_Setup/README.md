@@ -58,7 +58,7 @@ Now you can call the splunk binary by simply typing `splunk` in the console. Ini
     #enables a listening port for the indexer
 1. `splunk enable boot-start -user root -systemd-managed 1`
     #enables splunk at boot
-1. `splunk start
+1. `splunk start`
 1. `splunk enable deploy-server`
     #enables deployment server
 
