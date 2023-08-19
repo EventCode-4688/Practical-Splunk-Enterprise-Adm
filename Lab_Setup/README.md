@@ -33,11 +33,9 @@ echo 'export PATH=$PATH:/opt/splunk/bin' >> ~/.bashrc
     #turns on HTTPS
 1. `splunk set web-port 8443`
     #sets web port to 8443
-1. `splunk enable boot-start -user root`
-    #enables splunk at boot
 1. `splunk start`
 1. `splunk enable deploy-server`
-    #enables deployment server
+    #enables deployment server / username is admin with no password
 
 
 # Digital Ocean Setup
