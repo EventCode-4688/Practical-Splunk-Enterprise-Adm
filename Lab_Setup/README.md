@@ -41,7 +41,7 @@ wget -O splunk.tgz "https://download.splunk.com/products/splunk/releases/9.1.0.2
 tar xvzf splunk.tgz -C /opt
 ```
 
-You now have a copy of Splunk enterprise in the /opt/splunk directory. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
+You now have a copy of Splunk Enterprise in the /opt/splunk directory. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
 ```
 export PATH=$PATH:/opt/splunk/bin
 echo 'export PATH=$PATH:/opt/splunk/bin' >> ~/.bashrc
@@ -58,3 +58,30 @@ splunk enable boot-start -user root -systemd-managed 1 #enables splunk at boot
 splunk start
 splunk enable deploy-server #enables deployment server
 ```
+
+At this point you should be able to sign into the Web Server by navigating to https://<splunk-ms IP>:8443
+
+### splunk-uf
+Login as root through SSH or the Digital Ocean console and use the following commands:
+```
+mkdir /opt/splunkforwarder
+yum install wget
+wget -O splunkforwarder.tgz "https://download.splunk.com/products/universalforwarder/releases/9.1.0.1/linux/splunkforwarder-9.1.0.1-77f73c9edb85-Linux-x86_64.tgz"
+tar xvzf splunkforwarder.tgz -C /opt
+```
+
+You now have a copy of the Splunk Universal Forwarder in the /opt/splunkforwarder directory. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
+```
+export PATH=$PATH:/opt/splunkforwarder/bin
+echo 'export PATH=$PATH:/opt/splunkforwarder/bin' >> ~/.bashrc
+```
+
+Now you can call the splunk binary by simply typing `splunk` in the console. Initiate the Splunk UF and point it to the splunk-ms instance as its deployment server and indexer:
+```
+splunk start --accept-license --answer-yes
+# Create admin user and password
+splunk set deploy-poll <splunk-ms IP>:8089
+splunk add forward-server <splunk-ms IP>:9997
+splunk restart
+```
+
