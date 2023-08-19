@@ -49,7 +49,7 @@ echo 'export PATH=$PATH:/opt/splunk/bin' >> ~/.bashrc
 
 Now you can call the splunk binary by simply typing `splunk` in the console. Initiate the Splunk Enterprise instance with some additional setting changes:
 
-1. `splunk start --accept-license
+1. `splunk start --accept-license`
     #Enter an admin username and password that you will use throughout the course
 1. `splunk stop`
 1. `splunk enable web-ssl`
