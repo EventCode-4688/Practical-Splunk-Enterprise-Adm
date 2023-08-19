@@ -14,12 +14,12 @@ services:
     environment:
         - SPLUNK_PASSWORD=Password123!
         - SPLUNK_START_ARGS=--accept-license
-  splunk-indx:
+  splunk-idx1:
     image: splunk/splunk:latest
-    container_name: splunk-indx
+    container_name: splunk-idx1
     environment:
         - SPLUNK_PASSWORD=Password123!
         - SPLUNK_START_ARGS=--accept-license
     ports:
-        - 8443:8443
-        - 9997:9997
+        - 8000:8000
+        - 9998:9997

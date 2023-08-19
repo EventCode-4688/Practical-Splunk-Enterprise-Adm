@@ -8,13 +8,37 @@ Docker is the preferred setup method if you have enough local resources for the 
 - CPUs: 10 cores recommended
   _I recommend having at least 10 cores on your system, the docker compose does not limit the resources for the containers._
 
-## Install Docker Desktop
+## Install Docker Desktop and initialize containers
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your system.
 1. If using Windows, you will need to install Windows Subsystem For Linux as well. You can read more about this [here](https://docs.docker.com/desktop/wsl/)
 1. Start up Docker Desktop after the install is complete and then close the GUI after it finishes loading.
 1. Download the [docker-compose.yml](../Lab_Setup/docker/docker-compose.yml).
 1. Open a terminal and navigate to the directory containing the docker-compose.yml
-1. 
+1. Enter the following command: `docker-compose up -d` to start the docker containers.
+   - If you get any error messages, run the `docker-compose down` command to tear down the failed containers before troubleshooting.
+   - If docker fails to map the ports, run the following command: `netsh int ipv4 show excludedportrange protocol=tcp` and see if the failed ports are in the excluded range. If they are (i.e. 9997, 9998) then change them in the docker-compose file to a port not in range (i.e. 9901:9997, 9902:9997) and then re-run the `docker-compose up -d` command.
+1. Check to make sure the containers are healthy using `docker ps` and checking the status column.
+1. For now you can stop the splunk-indx1 container: `docker stop splunk-indx1`
+
+### splunk-ms
+1. Drop into the container's shell as root: `docker exec -u root -it splunk-ms bash`
+1. To make your life easier, add the splunk binary to your systems path and persist it with your bashrc file:
+```
+export PATH=$PATH:/opt/splunk/bin
+echo 'export PATH=$PATH:/opt/splunk/bin' >> ~/.bashrc
+
+```
+1. `splunk stop`
+1. `splunk enable web-ssl`
+    #turns on HTTPS
+1. `splunk set web-port 8443`
+    #sets web port to 8443
+1. `splunk enable boot-start -user root`
+    #enables splunk at boot
+1. `splunk start`
+1. `splunk enable deploy-server`
+    #enables deployment server
+
 
 # Digital Ocean Setup
 
