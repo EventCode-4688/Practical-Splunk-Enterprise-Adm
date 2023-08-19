@@ -61,10 +61,10 @@ Now you can call the splunk binary by simply typing `splunk` in the console. Ini
     #enables splunk at boot
 1. `splunk start`
 1. `splunk enable deploy-server`
-    #enables deployment server
+    #enables deployment server (use admin and password that you set up when starting Splunk.)
 
 
-At this point you should be able to sign into the Web Server by navigating to https://<splunk-ms IP>:8443
+At this point you should be able to sign into the Web Server by navigating to https://_splunk-msIP_:8443
 
 ### splunk-uf
 Login as root through SSH or the Digital Ocean console and use the following commands:
@@ -85,8 +85,9 @@ echo 'export PATH=$PATH:/opt/splunkforwarder/bin' >> ~/.bashrc
 Now you can call the splunk binary by simply typing `splunk` in the console. Initiate the Splunk UF and point it to the splunk-ms instance as its deployment server and indexer:
 
 1. `splunk start --accept-license`
-    # Create admin user and password
+    #Create admin user and password
 1. `splunk set deploy-poll <splunk-ms IP>:8089`
 1. `splunk add forward-server <splunk-ms IP>:9997`
 1. `splunk restart`
 
+Once the UF restarts you should be able to see the forwarder on the splunk-ms webserver under 
