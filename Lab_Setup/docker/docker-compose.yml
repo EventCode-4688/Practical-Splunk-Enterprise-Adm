@@ -1,0 +1,25 @@
+services:
+  splunk-ms:
+    image: splunk/splunk:latest
+    container_name: splunk-ms
+    environment:
+        - SPLUNK_PASSWORD=Password123!
+        - SPLUNK_START_ARGS=--accept-license
+    ports:
+        - 8443:8443
+        - 9997:9997
+  splunk-uf:
+    image: splunk/universalforwarder:latest
+    container_name: splunk-uf
+    environment:
+        - SPLUNK_PASSWORD=Password123!
+        - SPLUNK_START_ARGS=--accept-license
+  splunk-indx:
+    image: splunk/splunk:latest
+    container_name: splunk-indx
+    environment:
+        - SPLUNK_PASSWORD=Password123!
+        - SPLUNK_START_ARGS=--accept-license
+    ports:
+        - 8443:8443
+        - 9997:9997
