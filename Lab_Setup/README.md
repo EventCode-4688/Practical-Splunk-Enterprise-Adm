@@ -12,7 +12,7 @@ Docker is the preferred setup method if you have enough local resources for the 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your system.
 1. If using Windows, you will need to install Windows Subsystem For Linux as well. You can read more about this [here](https://docs.docker.com/desktop/wsl/)
 1. Start up Docker Desktop after the install is complete and then close the GUI after it finishes loading.
-1. Download the [docker-compose.yml](/docker/docker-compose.yml).
+1. Download the [docker-compose.yml](../Lab_Setup/docker/docker-compose.yml).
 1. Open a terminal and navigate to the directory containing the docker-compose.yml
 1. 
 
