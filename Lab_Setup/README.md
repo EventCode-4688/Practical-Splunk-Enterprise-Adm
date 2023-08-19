@@ -55,6 +55,8 @@ Now you can call the splunk binary by simply typing `splunk` in the console. Ini
 1. `splunk stop`
 1. `splunk enable web-ssl`
     #turns on HTTPS
+1. `splunk set web-port 8443`
+    #sets web port to 8443
 1. `splunk enable listen 9997`
     #enables a listening port for the indexer
 1. `splunk enable boot-start -user root -systemd-managed 1`
@@ -90,4 +92,7 @@ Now you can call the splunk binary by simply typing `splunk` in the console. Ini
 1. `splunk add forward-server <splunk-ms IP>:9997`
 1. `splunk restart`
 
-Once the UF restarts you should be able to see the forwarder on the splunk-ms webserver under 
+Once the UF restarts you should be able to see the forwarder on the splunk-ms webserver under Settings > Forwarder Management > Clients Tab
+
+You can also make sure the forwarder is sending it's internal logs by running the following search:
+`index=_internal host=splunk-uf`
