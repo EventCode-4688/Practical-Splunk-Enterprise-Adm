@@ -19,7 +19,7 @@ Docker is the preferred setup method if you have enough local resources for the 
    - If you get any error messages, run the `docker-compose down` command to tear down the failed containers before troubleshooting.
    - If docker fails to map the ports, run the following command: `netsh int ipv4 show excludedportrange protocol=tcp` and see if the failed ports are in the excluded range. If they are (i.e. 9997, 9998) then change them in the docker-compose file to a port not in range (i.e. 9901:9997, 9902:9997) and then re-run the `docker-compose up -d` command.
 1. Check to make sure the containers are healthy using `docker ps` and checking the status column.
-1. For now you can stop the splunk-indx1 container: `docker stop splunk-indx1`
+1. For now you can stop the splunk-idx1 container: `docker stop splunk-idx1`
 
 ### splunk-ms
 1. Drop into the container's shell as root: `docker exec -u root -it splunk-ms bash`
@@ -79,7 +79,7 @@ If you do not already have a Digital Ocean account, you can take advantage of my
   - CPU:
     - Minimum: 2 GB / 2 CPUs / 60 GB SSD
 	- Recommended: 4 GB / 2 CPUs / 80 GB SSD
-- Hostname: splunk-indx (Do not set up in Digital Ocean, until you proceed to that part of the class to limit cost towards your credit.)
+- Hostname: splunk-idx1 (Do not set up in Digital Ocean, until you proceed to that part of the class to limit cost towards your credit.)
   - Region: Choose the region closest to you.
   - Datacenter: Stick to the same datacenter for all machines.
   - Image: CentOS 9 Stream x64
