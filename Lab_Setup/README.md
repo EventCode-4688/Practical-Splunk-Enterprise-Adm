@@ -1,5 +1,21 @@
 # Lab Setup Instruction Guide
 
+# Docker Setup
+Docker is the preferred setup method if you have enough local resources for the lab.
+## Recommended Host PC specs:
+- RAM: 32 GB Preferred, 16 GB Minimum
+- Storage: 100 GB
+- CPUs: 10 cores recommended
+  _I recommend having at least 10 cores on your system, the docker compose does not limit the resources for the containers._
+
+## Install Docker Desktop
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) for your system.
+1. If using Windows, you will need to install Windows Subsystem For Linux as well. You can read more about this [here](https://docs.docker.com/desktop/wsl/)
+1. Start up Docker Desktop after the install is complete and then close the GUI after it finishes loading.
+1. Download the [docker-compose.yml](/docker/docker-compose.yml).
+1. Open a terminal and navigate to the directory containing the docker-compose.yml
+1. 
+
 # Digital Ocean Setup
 
 If you do not already have a Digital Ocean account, you can take advantage of my [referral link](https://m.do.co/c/110226b98241) and get a $200 credit, which should get you through the whole lab.
