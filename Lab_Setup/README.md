@@ -1,7 +1,8 @@
 # Lab Setup Instruction Guide
 
 # Docker Setup
-Docker is the preferred setup method if you have enough local resources for the lab.
+Docker is the preferred setup method if you have enough local resources for the lab. If you do not, then Digital Ocean can host the necessary machines and you can skip to that part.
+
 ## Recommended Host PC specs:
 - RAM: 32 GB Preferred, 16 GB Minimum
 - Storage: 100 GB
@@ -37,6 +38,7 @@ Docker is the preferred setup method if you have enough local resources for the 
 1. `splunk enable deploy-server`
     #enables deployment server / username is admin with no password
 1. Lastly, you will need to get the IP address of your splunk-ms container for setting up your Universal Forwarder. As the machine doesn't have network tools installed you can get this by using the following command: `grep -B 1 "/32 host LOCAL" /proc/net/fib_trie` and it should be the IP address that isn't your 127.0.0.1 localhost.
+1. `exit`
 
 ### splunk-uf
 1. Drop into the container's shell as root: `docker exec -u root -it splunk-uf bash`
@@ -48,6 +50,13 @@ Docker is the preferred setup method if you have enough local resources for the 
 1. `splunk set deploy-poll <splunk-ms IP>:8089`
 1. `splunk add forward-server <splunk-ms IP>:9997`
 1. `splunk restart`
+
+Once the UF restarts you should be able to see the forwarder on the splunk-ms webserver under Settings > Forwarder Management > Clients Tab
+
+You can also make sure the forwarder is sending it's internal logs by running the following search:
+`index=_internal host=splunk-uf`
+
+### This completes the initial docker lab setup. You will finish setting up the splunk-idx1 server at a later time
 
 # Digital Ocean Setup
 
@@ -145,3 +154,5 @@ Once the UF restarts you should be able to see the forwarder on the splunk-ms we
 
 You can also make sure the forwarder is sending it's internal logs by running the following search:
 `index=_internal host=splunk-uf`
+
+### Once the UF is set up, you can continue on with the class until you need to set up the splunk-idx1 server
