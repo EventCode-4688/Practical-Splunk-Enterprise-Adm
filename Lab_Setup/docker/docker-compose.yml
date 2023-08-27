@@ -8,6 +8,7 @@ services:
     ports:
         - 8443:8443
         - 9997:9997
+        - 8089:8089
   splunk-uf:
     image: splunk/universalforwarder:latest
     container_name: splunk-uf
@@ -23,3 +24,4 @@ services:
     ports:
         - 8000:8000
         - 9998:9997
+        - 8090:8089
